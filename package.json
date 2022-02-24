@@ -1,5 +1,5 @@
 {
-  "name": "acceptance",
+  "name": "web-based-todo-list-e2e-acceptance",
   "version": "1.0.0",
   "files": [
     "/features"
