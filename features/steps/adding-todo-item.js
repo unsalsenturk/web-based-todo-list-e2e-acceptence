@@ -5,7 +5,7 @@ const checkContainsText = require("../support/check/checkContainsText")
 
 
 Given(/^Empty ToDo list$/, async function () {
-    await openUrl.call(this, "/")
+    await openUrl.call(this, "http://localhost:8080/")
     await waitForSelector.call(this, '#todolist')
     const selector = "#todolist"
     await checkContainsText.call(this, selector, false, "")
