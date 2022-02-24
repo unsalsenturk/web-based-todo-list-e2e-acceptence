@@ -1,4 +1,4 @@
-Feature: Adding a TODO item
+Feature: adding-todo-item
 
   Scenario: The user should be able to add an item to the to-do list.
     Given Empty ToDo list
