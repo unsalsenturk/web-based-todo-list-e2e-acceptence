@@ -10,7 +10,16 @@ Given(/^Empty ToDo list$/, async function () {
     const elementText = await this.page.$eval(selector, el => el.textContent);
     assert.strictEqual(elementText, "", `Expected "${selector}" to "" but had "${elementText}" instead`);});
 
-When(/^I write "([^"]*)" to (.*) and click to (.*)$/, function (arr,txt,btn) {
+When(/^I write "([^"]*)" to (.*) and click to (.*)$/,async function (arr,txt,btn) {
+
+    txtSelector = "addTxt"
+    btnSelector = "addBtn"
+    await waitForSelector.call(this, txtSelector)
+    await waitForSelector.call(this, btnSelector)
+
+    for (let [listItem] of arr.rawTable) {
+        console.log(listItem)
+    }
 
 });
 Then(/^I should see "([^"]*)" item in ToDo list$/, function (arr) {
