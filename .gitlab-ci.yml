@@ -4,7 +4,8 @@ stages:
 if-UI-acceptence-test:
   image: node:17-alpine
   stage: if-UI-acceptence-test
+
   script:
-    - apt-get install chromium-browser
+    - apk add --no-cache  chromium --repository=http://dl-cdn.alpinelinux.org/alpine/v3.10/main
     - yarn install
     - yarn start
