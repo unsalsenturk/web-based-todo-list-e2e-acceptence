@@ -57,10 +57,4 @@ typings/
 # next.js build output
 .next
 
-/screenshots/compare
-/screenshots/diff
-/screenshots/error
-/test/reports/*.csv
-/test/screenshots/compare/*.png
-/test/screenshots/diff/*.png
-/test/screenshots/error/*.png
+
