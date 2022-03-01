@@ -2,7 +2,7 @@ stages:
   - if-UI-acceptence-test
 
 if-UI-acceptence-test:
-  image: node:17
+  image: node:17-alpine
   stage: if-UI-acceptence-test
   script:
     - apt-get install chromium-browser
