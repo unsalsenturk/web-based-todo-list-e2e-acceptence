@@ -2,6 +2,7 @@ const {Given, When, Then} = require("cucumber");
 const openUrl = require("../support/action/openUrl")
 const waitForSelector = require("../support/action/waitForSelector")
 const clickElement = require("../support/action/clickElement")
+const keyboardPress = require("../support/action/keyboardPress")
 const {strict: assert} = require("assert");
 
 Given(/^Empty ToDo list$/, async function () {
@@ -17,32 +18,20 @@ When(/^I write "([^"]*)" to (.*) and click to (.*)$/, async function (arr, txt, 
     txtSelector = "#addTxt"
     btnSelector = "#addBtn"
     mainSelector = "#ToDoListMain"
-    await waitForSelector.call(this, txtSelector)
-    await waitForSelector.call(this, btnSelector)
 
-    await clickElement.call(this,txtSelector)
-
-    await this.page.$eval(mainSelector, async (el, arr,txtSelector,btnSelector) => {
-
-        const txt = el.querySelector(txtSelector)
-        const btn = el.querySelector(btnSelector)
-
-        txt.innerText = arr
-        await btn.click()
-
-        },
-        arr,txtSelector,btnSelector);
+    await this.page.focus(txtSelector);
+    await this.page.keyboard.type(arr);
 
     await clickElement.call(this,btnSelector)
+    await this.page.waitForTimeout(10 * 1000);
 
 });
 Then(/^I should see "([^"]*)" item in ToDo list$/,async function (arr) {
-    const selector = '#todolist ul'
-    await waitForSelector.call(this, selector)
+    const selector = '#todolist ul li'
     const isIncludes = await this.page.$$eval(selector,
         (items, arr) => {
-            const isIncludes = items.includes(arr)
-            return !!isIncludes
+            const isIncludes = items.filter(x => x.innerText == arr)
+            return isIncludes.length == 1
         },
         arr);
     assert.strictEqual(isIncludes, true)
