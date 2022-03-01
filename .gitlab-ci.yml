@@ -1,21 +1,8 @@
 stages:
-  - dockerize
   - if-UI-acceptence-test
 
-
-dockerize:
-  image: docker:19.03.12
-  stage: dockerize
-  services:
-    - docker:19.03.12-dind
-  script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA .
-    - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA $CI_REGISTRY_IMAGE:latest
-    - docker push $CI_REGISTRY_IMAGE:latest
-
 if-UI-acceptence-test:
-  image: $CI_REGISTRY_IMAGE:latest
+  image: node:17-latest
   stage: if-UI-acceptence-test
   script:
     - yarn install
