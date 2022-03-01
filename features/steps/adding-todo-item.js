@@ -5,7 +5,7 @@ const clickElement = require("../support/action/clickElement")
 const {strict: assert} = require("assert");
 
 Given(/^Empty ToDo list$/, async function () {
-    await openUrl.call(this, "http://localhost:8080/")
+    await openUrl.call(this, "http://34.135.153.228")
     const selector = '#todolist'
     await waitForSelector.call(this, selector)
     const elementText = await this.page.$eval(selector, el => el.textContent);
