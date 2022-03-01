@@ -5,5 +5,5 @@ if-UI-acceptence-test:
   image: node:17-alpine
   stage: if-UI-acceptence-test
   script:
-    - yarn install
-    - yarn start
+    - npm install
+    - npm start
