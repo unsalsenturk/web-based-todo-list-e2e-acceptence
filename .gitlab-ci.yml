@@ -2,7 +2,7 @@ stages:
   - if-UI-acceptence-test
 
 if-UI-acceptence-test:
-  image: node:17-alpine
+  image: node:17
   stage: if-UI-acceptence-test
   script:
     - npm install
