@@ -15,6 +15,7 @@ class BrowserScope {
 
     async init(){
         const defaultOptions = {
+            executablePath: '/usr/bin/chromium-browser',
             args: ['--no-sandbox', '--disable-dev-shm-usage','--single-process', '--no-zygote'],
             ignoreHTTPSErrors: true
         }

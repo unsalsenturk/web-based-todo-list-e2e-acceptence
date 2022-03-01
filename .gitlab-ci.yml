@@ -5,5 +5,6 @@ if-UI-acceptence-test:
   image: node:17
   stage: if-UI-acceptence-test
   script:
-    - npm install
-    - npm start
+    - apt-get install chromium-browser
+    - yarn install
+    - yarn start
