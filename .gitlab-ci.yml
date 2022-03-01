@@ -1,0 +1,9 @@
+stages:
+  - if-UI-acceptence-test
+
+if-UI-acceptence-test:
+  image: node:lts-alpine
+  stage: if-UI-acceptence-test
+  script:
+    - yarn install
+    - yarn start

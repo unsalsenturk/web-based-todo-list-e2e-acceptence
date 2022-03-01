@@ -9,25 +9,41 @@ Given(/^Empty ToDo list$/, async function () {
     const selector = '#todolist'
     await waitForSelector.call(this, selector)
     const elementText = await this.page.$eval(selector, el => el.textContent);
-    assert.strictEqual(elementText, "", `Expected "${selector}" to "" but had "${elementText}" instead`);
+    //assert.strictEqual(elementText, "", `Expected "${selector}" to "" but had "${elementText}" instead`);
 });
 
 When(/^I write "([^"]*)" to (.*) and click to (.*)$/, async function (arr, txt, btn) {
 
     txtSelector = "#addTxt"
     btnSelector = "#addBtn"
+    mainSelector = "#ToDoListMain"
     await waitForSelector.call(this, txtSelector)
     await waitForSelector.call(this, btnSelector)
 
-    const elementText = await this.page.$eval(txtSelector, async (el, arr) => {
-            el.value = arr
-            el.innerHTML = arr
-            return el.textContent
+    await clickElement.call(this,txtSelector)
+
+    await this.page.$eval(mainSelector, async (el, arr,txtSelector,btnSelector) => {
+
+        const txt = el.querySelector(txtSelector)
+        const btn = el.querySelector(btnSelector)
+
+        txt.innerText = arr
+        await btn.click()
+
         },
-        arr);
+        arr,txtSelector,btnSelector);
+
     await clickElement.call(this,btnSelector)
 
 });
-Then(/^I should see "([^"]*)" item in ToDo list$/, function (arr) {
-
+Then(/^I should see "([^"]*)" item in ToDo list$/,async function (arr) {
+    const selector = '#todolist ul'
+    await waitForSelector.call(this, selector)
+    const isIncludes = await this.page.$$eval(selector,
+        (items, arr) => {
+            const isIncludes = items.includes(arr)
+            return !!isIncludes
+        },
+        arr);
+    assert.strictEqual(isIncludes, true)
 });
