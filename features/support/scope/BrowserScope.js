@@ -19,7 +19,7 @@ class BrowserScope {
             args: ['--no-sandbox', '--disable-dev-shm-usage','--single-process', '--no-zygote'],
             ignoreHTTPSErrors: true
         }
-        this.close();
+        await this.close();
 
         this.config = {...defaultOptions, ...puppeteerOptions, ...this.worldParameters};
         if('browserWSEndpoint' in this.config) {

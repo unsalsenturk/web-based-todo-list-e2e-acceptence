@@ -27,17 +27,14 @@ class FeatureScope {
      */
     async init(currentFeature, worldParameters){
         this.feature = currentFeature;
-        console.log("browserScope",this.browserScope)
         if(this.browserScope){
             await this.browserScope.close();
             this.browserScope = null;
         }
-        console.log("browserScope",this.browserScope)
         this.browserScope = new BrowserScope({parameters: worldParameters});
-        console.log("browserScope",this.browserScope)
-        await this.browserScope.init();
 
-        console.log("browserScope init islemi gerceklesti")
+        await this.browserScope.init();
+        console.log("init islemi gerceklesti")
     }
 
     async coverageStart(){
