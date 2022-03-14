@@ -27,7 +27,7 @@ class FeatureScope {
      */
     async init(currentFeature, worldParameters){
         this.feature = currentFeature;
-        
+        console.log("browserScope",this.browserScope)
         if(this.browserScope){
             await this.browserScope.close();
             this.browserScope = null;
