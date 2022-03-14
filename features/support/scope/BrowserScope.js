@@ -20,7 +20,6 @@ class BrowserScope {
             ignoreHTTPSErrors: true
         }
         await this.close();
-
         this.config = {...defaultOptions, ...puppeteerOptions, ...this.worldParameters};
         if('browserWSEndpoint' in this.config) {
             this.browser = await puppeteer.connect(this.config);
