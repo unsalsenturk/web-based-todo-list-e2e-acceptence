@@ -32,9 +32,10 @@ class FeatureScope {
             await this.browserScope.close();
             this.browserScope = null;
         }
-        
+        console.log("browserScope close islemi gerceklesti")
         this.browserScope = new BrowserScope({parameters: worldParameters});
         await this.browserScope.init();
+        console.log("browserScope init islemi gerceklesti")
     }
 
     async coverageStart(){
