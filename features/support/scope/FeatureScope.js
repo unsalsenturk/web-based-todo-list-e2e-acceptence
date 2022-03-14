@@ -36,6 +36,9 @@ class FeatureScope {
 
         await this.browserScope.init();
 
+
+
+
         console.log("init islemi gerceklesti")
     }
 
