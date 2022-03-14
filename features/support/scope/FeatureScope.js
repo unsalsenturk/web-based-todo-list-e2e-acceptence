@@ -35,11 +35,6 @@ class FeatureScope {
         this.browserScope = new BrowserScope({parameters: worldParameters});
 
         await this.browserScope.init();
-
-
-
-
-        console.log("init islemi gerceklesti")
     }
 
     async coverageStart(){
