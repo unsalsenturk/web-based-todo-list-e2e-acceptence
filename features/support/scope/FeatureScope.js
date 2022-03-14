@@ -32,7 +32,7 @@ class FeatureScope {
             await this.browserScope.close();
             this.browserScope = null;
         }
-        console.log("browserScope close islemi gerceklesti")
+        console.log("browserScope",this.browserScope)
         this.browserScope = new BrowserScope({parameters: worldParameters});
         console.log("worldParameters : ",worldParameters)
         await this.browserScope.init();
