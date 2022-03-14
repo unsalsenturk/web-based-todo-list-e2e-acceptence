@@ -31,9 +31,11 @@ class FeatureScope {
             await this.browserScope.close();
             this.browserScope = null;
         }
+
         this.browserScope = new BrowserScope({parameters: worldParameters});
 
         await this.browserScope.init();
+
         console.log("init islemi gerceklesti")
     }
 
